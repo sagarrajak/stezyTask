@@ -1,3 +1,33 @@
-<p>
-  paragraph-text works!
-</p>
+<div fxLayout="column" fxLayoutAlign="center">
+    <p-toast position="top-left"></p-toast>
+    <div class="ui-g ui-fluid">
+     <form [formGroup]='form.paragraphTextForm'>
+        <div class="ui-g-12 ui-md-12">
+          <div class="ui-inputgroup">
+            <input type="text" pInputText placeholder="name" formControlName='name'>
+          </div>
+          <div *ngIf="form.paragraphTextForm.get('name').touched||form.paragraphTextForm.get('name').dirty">
+            <span class="error-label" *ngIf="form.paragraphTextForm.get('name').hasError('required')">Field is required</span>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-md-12">
+          <div class="ui-inputgroup">
+            <input type="text" pInputText placeholder="Placeholder" formControlName='placeholder'>
+          </div>
+          <div *ngIf="form.paragraphTextForm.get('placeholder').touched||form.paragraphTextForm.get('placeholder').dirty">
+              <span  class="error-label" *ngIf="form.paragraphTextForm.get('placeholder').hasError('required')">Field is required</span>
+          </div>
+        </div>
+        <div>
+          <h3>Is field is required</h3>
+          <div class="ui-g" style="width:250px;margin-bottom:10px">
+              <div class="ui-g-12"><p-radioButton name="group1" value='0' label="Yes" formControlName='isRequired' ></p-radioButton></div>
+              <div class="ui-g-12"><p-radioButton name="group1" value='1' label="No" formControlName='isRequired' ></p-radioButton></div>
+          </div>
+        </div>
+        <div fxLayout="row"  fxFlexAlign="end">
+            <button pButton type="button" label="submit" (click)="formSubmit()"></button>
+        </div>
+     </form >
+    </div>
+  </div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormFieldsService } from '../form-fields.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-single-line-text',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SingleLineTextComponent implements OnInit {
 
-  constructor() { }
+  constructor(public form: FormFieldsService, private messageService: MessageService) { }
 
   ngOnInit() {
   }
 
+  public formSubmit(): void {
+    if(!this.form.singleLineTextForm.valid){
+      this.messageService.add({
+          severity: 'error',
+          summary: 'Invalid form!'
+      });
+      this.form.singleLineTextForm.markAllAsTouched();
+    }
+    else {
+      console.log(this.form.singleLineTextForm.value);
+    }
+  }
 }

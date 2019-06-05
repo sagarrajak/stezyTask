@@ -14,8 +14,14 @@ import { MultipleChoiceComponent } from './ui-elements/multiple-choice/multiple-
 import { ParagraphTextComponent } from './ui-elements/paragraph-text/paragraph-text.component';
 import { SingleLineTextComponent } from './ui-elements/single-line-text/single-line-text.component';
 import { DynamicDialogModule } from 'primeng/components/dynamicdialog/dynamicdialog';
-
-
+import { InputTextModule } from 'primeng/inputtext';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { CheckboxModule } from 'primeng/checkbox';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import {ToastModule} from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { ErrorMessageComponent } from './util/error-message/error-message.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +33,8 @@ import { DynamicDialogModule } from 'primeng/components/dynamicdialog/dynamicdia
     DropDownComponent,
     MultipleChoiceComponent,
     FormContainerComponent,
+    ErrorMessageComponent
+
   ],
   imports: [
     DynamicDialogModule,
@@ -35,9 +43,16 @@ import { DynamicDialogModule } from 'primeng/components/dynamicdialog/dynamicdia
     ButtonModule,
     CardModule,
     PanelModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    InputTextModule,
+    FlexLayoutModule,
+    CheckboxModule,
+    ReactiveFormsModule,
+    FormsModule,
+    RadioButtonModule,
+    ToastModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent],
   entryComponents: [
     CheckboxComponent,

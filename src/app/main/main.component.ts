@@ -22,7 +22,7 @@ export class MainComponent implements OnInit {
   public openDialogInputSingleLine(): void {
       this.dialogService.open(SingleLineTextComponent, {
         header: 'Add Input Field',
-        width: '40%'
+        width: '30%'
       })
   }
 
@@ -30,28 +30,28 @@ export class MainComponent implements OnInit {
   public openDialogInputParagraph(): void {
     this.dialogService.open(ParagraphTextComponent, {
       header: 'Add Text Area',
-      width: '40%'
+      width: '30%'
     })
   }
 
   public openDialogInputMultipleChoice(): void {
     this.dialogService.open(MultipleChoiceComponent, {
       header: 'Add Multiple Choice',
-      width: '40%'
+      width: '30%'
     });
   }
 
   public openDialogInputDropDown(): void {
     this.dialogService.open(DropDownComponent, {
       header: 'Add Dropdown',
-      width: '40%'
+      width: '30%'
     });
   }
 
   public openDialogInputCheckbox(): void {
     this.dialogService.open(CheckboxComponent, {
       header: 'Add checkbox',
-      width: '40%'
+      width: '20%'
     });
   }
 
