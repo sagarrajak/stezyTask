@@ -2,7 +2,7 @@
   <div class="ui-inputgroup">
     <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize" [placeholder]="parameter.placeholder" [formControlName]='parameter.name'></textarea>
   </div>
-  <div *ngIf="parameter.group.get(parameter.name).touched||parameter.group.get(parameter.name).dirty">
-    <span class="error-label" *ngIf="parameter.get(parameter.name).hasError('required')">Field is required</span>
+  <div *ngIf="group.get(parameter.name).touched||group.get(parameter.name).dirty">
+    <span class="error-label" *ngIf="group.get(parameter.name).hasError('required')">Field is required</span>
   </div>
 </div>

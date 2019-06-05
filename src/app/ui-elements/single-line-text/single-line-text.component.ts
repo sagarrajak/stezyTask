@@ -1,18 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormFieldsService } from '../form-fields.service';
 import { MessageService } from 'primeng/api';
+import { MainService, ENUMFormTypes } from 'src/app/main.service';
 
 @Component({
   selector: 'app-single-line-text',
   templateUrl: './single-line-text.component.html',
   styleUrls: ['./single-line-text.component.scss']
 })
-export class SingleLineTextComponent implements OnInit {
+export class SingleLineTextComponent {
 
-  constructor(public form: FormFieldsService, private messageService: MessageService) { }
-
-  ngOnInit() {
-  }
+  constructor(public form: FormFieldsService, 
+    private messageService: MessageService,
+    public mainService: MainService
+    ) {}
 
   public formSubmit(): void {
     if(!this.form.singleLineTextForm.valid){
@@ -23,7 +24,10 @@ export class SingleLineTextComponent implements OnInit {
       this.form.singleLineTextForm.markAllAsTouched();
     }
     else {
-      console.log(this.form.singleLineTextForm.value);
+      this.mainService.addNewValue({
+        ...this.form.singleLineTextForm.value,
+        ...{type: ENUMFormTypes.INPUT}
+      });
     }
   }
 }

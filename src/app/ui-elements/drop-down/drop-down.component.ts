@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormArray } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { FormFieldsService } from '../form-fields.service';
+import { MainService, ENUMFormTypes } from 'src/app/main.service';
 
 @Component({
   selector: 'app-drop-down',
@@ -12,7 +13,8 @@ export class DropDownComponent {
 
   constructor(
     public form: FormFieldsService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private mainService: MainService
   ) {}
 
   public formSubmit(): void {
@@ -24,7 +26,10 @@ export class DropDownComponent {
       this.form.dorpDownTextForm.markAllAsTouched();
     }
     else {
-      console.log(this.form.dorpDownTextForm.value);
+      this.mainService.addNewValue({
+        ...this.form.dorpDownTextForm.value,
+        ...{type: ENUMFormTypes.DROP_DOWN}
+      });
     }
   }
 

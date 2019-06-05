@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormFieldsService } from '../form-fields.service';
 import { MessageService } from 'primeng/api';
 import { FormArray } from '@angular/forms';
+import { MainService, ENUMFormTypes } from 'src/app/main.service';
 
 @Component({
   selector: 'app-multiple-choice',
@@ -11,7 +12,8 @@ import { FormArray } from '@angular/forms';
 export class MultipleChoiceComponent {
   constructor(
     public form: FormFieldsService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private mainService: MainService
   ) {}
 
   public formSubmit(): void {
@@ -23,7 +25,10 @@ export class MultipleChoiceComponent {
       this.form.multipleChoiceForm.markAllAsTouched();
     }
     else {
-      console.log(this.form.multipleChoiceForm.value);
+      this.mainService.addNewValue({
+        ...this.form.multipleChoiceForm.value,
+        ...{type: ENUMFormTypes.MULTIPLE_CHOICE}
+      });
     }
   }
 

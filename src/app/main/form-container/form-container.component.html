@@ -3,10 +3,12 @@
         Created Form 
     </p-header>
     <div *ngFor='let element of mainService.formParameterArray'>
-        <task-checkbox-template [group]='mainService.createdFormGroup' [parameter]='element'></task-checkbox-template>
-        <app-input-single-line-template [group]='mainService.createdFormGroup' [parameter]='element'></app-input-single-line-template> 
-        <task-input-multi-choice-template [group]='mainService.createdFormGroup' [parameter]='element'></task-input-multi-choice-template>
-        <app-input-paragraph-template [group]='mainService.createdFormGroup' [parameter]='element'></app-input-paragraph-template>
-        <app-select-template [group]='mainService.createdFormGroup' [parameter]='element'></app-select-template>
+      <ng-container [ngSwitch]='element.type'>
+            <div *ngSwitchCase="'checkboxes'"><task-checkbox-template [group]='mainService.createdFormGroup' [parameter]='element'></task-checkbox-template></div>
+            <div *ngSwitchCase="'input'"><app-input-single-line-template [group]='mainService.createdFormGroup' [parameter]='element'></app-input-single-line-template> </div>
+            <div *ngSwitchCase="'multiple_choice'"><task-input-multi-choice-template [group]='mainService.createdFormGroup' [parameter]='element'></task-input-multi-choice-template></div>
+            <div *ngSwitchCase="'textarea'"><app-input-paragraph-template [group]='mainService.createdFormGroup' [parameter]='element'></app-input-paragraph-template></div>
+            <div *ngSwitchCase="'drop_down'"><app-select-template [group]='mainService.createdFormGroup' [parameter]='element'></app-select-template></div>
+      </ng-container>
     </div>
 </p-card>

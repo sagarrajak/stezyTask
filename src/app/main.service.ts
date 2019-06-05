@@ -40,10 +40,14 @@ export class MainService {
 
   public addNewValue(value: IFormObject): void {
     let valueToAdd: any;
-    if (value.type = ENUMFormTypes.MULTIPLE_CHOICE) valueToAdd = [];
+    if (value.type === ENUMFormTypes.MULTIPLE_CHOICE) valueToAdd = [];
     else valueToAdd = '';
     if (this.createdFormGroup.controls[value.name])console.error('Name already added');
-    else this.createdFormGroup.addControl(value.name, new FormControl(valueToAdd))
+    else {
+      this.createdFormGroup.addControl(value.name, new FormControl(valueToAdd));
+      this.formParameterArray.push(value);
+      console.log('passed value', this.formParameterArray);
+    }
   }
 
   public deleteAtIndex(index: number): void {

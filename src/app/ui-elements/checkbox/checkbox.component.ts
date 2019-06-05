@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormFieldsService } from '../form-fields.service';
 import { MessageService } from 'primeng/api';
 import { FormArray } from '@angular/forms';
+import { MainService, ENUMFormTypes } from 'src/app/main.service';
 
 @Component({
   selector: 'app-checkbox',
@@ -12,7 +13,8 @@ export class CheckboxComponent {
 
   constructor(
     public form: FormFieldsService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private mainService: MainService
   ) {}
 
   public formSubmit(): void {
@@ -24,7 +26,10 @@ export class CheckboxComponent {
       this.form.checkBoxForm.markAllAsTouched();
     }
     else {
-      console.log(this.form.checkBoxForm.value);
+      this.mainService.addNewValue({
+        ...this.form.checkBoxForm.value,
+        ...{type: ENUMFormTypes.DROP_DOWN}
+      });
     }
   }
 

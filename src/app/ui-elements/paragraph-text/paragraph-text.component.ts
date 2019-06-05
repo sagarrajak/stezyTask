@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { FormFieldsService } from '../form-fields.service';
+import { MainService, ENUMFormTypes } from 'src/app/main.service';
 
 @Component({
   selector: 'app-paragraph-text',
@@ -9,7 +10,10 @@ import { FormFieldsService } from '../form-fields.service';
 })
 export class ParagraphTextComponent  {
 
-  constructor(public form: FormFieldsService, private messageService: MessageService) {  }
+  constructor(public form: FormFieldsService, 
+    private messageService: MessageService,
+    private mainService: MainService  
+  ) {  }
 
   public formSubmit(): void {
     if(!this.form.paragraphTextForm.valid){
@@ -20,7 +24,10 @@ export class ParagraphTextComponent  {
       this.form.paragraphTextForm.markAllAsTouched();
     }
     else {
-      console.log(this.form.paragraphTextForm.value);
+      this.mainService.addNewValue({
+        ...this.form.paragraphTextForm.value,
+        ...{type: ENUMFormTypes.TEXTAREA}
+      });
     }
   }
 
