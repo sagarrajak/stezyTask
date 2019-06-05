@@ -1,3 +1,60 @@
-<p>
-  multiple-choice works!
-</p>
+<div fxLayout="column" fxLayoutAlign="center">
+    <p-toast position="top-left"></p-toast>
+    <div class="ui-g ui-fluid">
+     <form [formGroup]='form.multipleChoiceForm'>
+        <div class="ui-g-12 ui-md-12">
+          <div class="ui-inputgroup">
+            <input type="text" pInputText placeholder="name" formControlName='name'>
+          </div>
+          <div *ngIf="form.multipleChoiceForm.get('name').touched||form.multipleChoiceForm.get('name').dirty">
+            <span class="error-label" *ngIf="form.multipleChoiceForm.get('name').hasError('required')">Field is required</span>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-md-12">
+          <div class="ui-inputgroup">
+            <input type="text" pInputText placeholder="Placeholder" formControlName='placeholder'>
+          </div>
+          <div *ngIf="form.multipleChoiceForm.get('placeholder').touched||form.multipleChoiceForm.get('placeholder').dirty">
+              <span  class="error-label" *ngIf="form.multipleChoiceForm.get('placeholder').hasError('required')">Field is required</span>
+          </div>
+        </div>
+        <div>
+          <h3>Is field is required</h3>
+          <div class="ui-g" style="width:250px;margin-bottom:10px">
+              <div class="ui-g-12"><p-radioButton name="group1" value='0' label="Yes" formControlName='isRequired' ></p-radioButton></div>
+              <div class="ui-g-12"><p-radioButton name="group1" value='1' label="No" formControlName='isRequired' ></p-radioButton></div>
+          </div>
+        </div>
+        <div>
+          <div fxLayout="row" fxLayoutAlign="space-between">
+              <h3>Options of select field</h3>
+              <p-button label="add" (click)='addMultipleChoiceOption()'></p-button>
+          </div>
+          <div *ngFor="let item of form.multipleChoiceForm.get('options')['controls'];let i = index">
+                <div class="ui-g ui-fluid">
+                    <form [formGroup]='item'>
+                      <div class="ui-g-12 ui-md-5">
+                          <div class="ui-inputgroup">
+                              <input type="text" pInputText placeholder="Value to send" formControlName='value'>
+                          </div>
+                          <task-err [control]="item.get('value')"></task-err>
+                      </div>
+                      <div class="ui-g-12 ui-md-5">
+                          <div class="ui-inputgroup">
+                              <input type="text" pInputText placeholder="Label for checkbox" formControlName='label'>
+                          </div>
+                          <task-err [control]="item.get('label')"></task-err>
+                      </div> 
+                      <div class="ui-g-12 ui-md-2">
+                          <button  type="button" pButton class="ui-button-danger" icon="pi pi-times-circle" (click)='deleteMultipleChoiceFormOption(i)'></button>
+                      </div>
+                    </form>
+                </div>
+          </div>
+        </div>
+        <div fxLayout="row"  fxFlexAlign="end">
+            <button pButton type="button" label="submit" (click)="formSubmit()"></button>
+        </div>
+     </form >
+    </div>
+  </div>

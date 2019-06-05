@@ -11,32 +11,38 @@ export class FormFieldsService {
   public paragraphTextForm: FormGroup;
   public checkBoxForm: FormGroup;
 
-  constructor(private fb: FormBuilder) { 
+  constructor(private fb: FormBuilder) {
     this.singleLineTextForm = this.fb.group({
-       name:  ['', Validators.required],
-       placeholder: ['', Validators.required],
-       isRequired: ['0', Validators.required]
+      name: ['', Validators.required],
+      placeholder: ['', Validators.required],
+      isRequired: ['0', Validators.required]
     });
 
     this.dorpDownTextForm = this.fb.group({
-      name:  ['', Validators.required],
+      name: ['', Validators.required],
       placeholder: ['', Validators.required],
       isRequired: ['0', Validators.required],
       options: this.fb.array([this.getSelectForm()])
     });
 
-    this.paragraphTextForm = this.fb.group({  
+    this.paragraphTextForm = this.fb.group({
       name: ['', Validators.required],
       placeholder: ['', Validators.required],
       isRequired: ['0', Validators.required]
     });
 
     this.multipleChoiceForm = this.fb.group({
-
+      name: ['', Validators.required],
+      placeholder: ['', Validators.required],
+      isRequired: ['0', Validators.required],
+      options: this.fb.array([this.getLabelArray()])
     });
 
     this.checkBoxForm = this.fb.group({
-
+      name: ['', Validators.required],
+      placeholder: ['', Validators.required],
+      isRequired: ['0', Validators.required],
+      options: this.fb.array([this.getLabelArray()])
     });
   }
 
@@ -48,16 +54,54 @@ export class FormFieldsService {
     });
   }
 
-
-  public deleteSelectForm(index:  number): void {
-    let optionsArray: FormArray = this.dorpDownTextForm.get('options') as FormArray;
-    if(index>=0 && optionsArray.length>0)
-       optionsArray.removeAt(index);
+  public getLabelArray(): FormGroup {
+    return new FormGroup({
+      label: new FormControl('', Validators.required),
+      value: new FormControl('', Validators.required)
+    });
   }
 
-  public addSelectForm(): void {
-    let optionsArray: FormArray = this.dorpDownTextForm.get('options') as FormArray;
-    optionsArray.push(this.getSelectForm());
+  public resetSingleLineTextForm(): void {
+    this.singleLineTextForm = this.fb.group({
+      name: ['', Validators.required],
+      placeholder: ['', Validators.required],
+      isRequired: ['0', Validators.required]
+    });
   }
-  
+
+  public resetParagraphTexForm(): void {
+    this.paragraphTextForm = this.fb.group({
+      name: ['', Validators.required],
+      placeholder: ['', Validators.required],
+      isRequired: ['0', Validators.required]
+    });
+  }
+
+  public resetDropDownForm(): void {
+    this.dorpDownTextForm = this.fb.group({
+      name: ['', Validators.required],
+      placeholder: ['', Validators.required],
+      isRequired: ['0', Validators.required],
+      options: this.fb.array([this.getSelectForm()])
+    });
+  }
+
+  public resetMultipleChoiceForm(): void {
+    this.multipleChoiceForm = this.fb.group({
+      name: ['', Validators.required],
+      placeholder: ['', Validators.required],
+      isRequired: ['0', Validators.required],
+      options: this.fb.array([this.getLabelArray()])
+    });
+  }
+
+  public resetCheckboxForm(): void {
+    this.checkBoxForm = this.fb.group({
+      name: ['', Validators.required],
+      placeholder: ['', Validators.required],
+      isRequired: ['0', Validators.required],
+      options: this.fb.array([this.getLabelArray()])
+    });
+  }
+
 }

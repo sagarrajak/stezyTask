@@ -28,23 +28,26 @@
         <div>
           <div fxLayout="row" fxLayoutAlign="space-between">
               <h3>Options of select field</h3>
-              <p-button label="add" (click)='form.addSelectForm()'></p-button>
+              <p-button label="add" (click)='addSelectFormOption()'></p-button>
           </div>
-          <div *ngFor="let item of form.dorpDownTextForm.get('options')['controls']">
+          <div *ngFor="let item of form.dorpDownTextForm.get('options')['controls'];let i = index">
                 <div class="ui-g ui-fluid">
                     <form [formGroup]='item'>
-                      <div class="ui-g-12 ui-md-6">
+                      <div class="ui-g-12 ui-md-5">
                           <div class="ui-inputgroup">
                               <input type="text" pInputText placeholder="Value to send" formControlName='value'>
                           </div>
                           <task-err [control]="item.get('value')"></task-err>
                       </div>
-                      <div class="ui-g-12 ui-md-6">
+                      <div class="ui-g-12 ui-md-5">
                           <div class="ui-inputgroup">
                               <input type="text" pInputText placeholder="Value to display" formControlName='viewValue'>
                           </div>
                           <task-err [control]="item.get('viewValue')"></task-err>
                       </div> 
+                      <div class="ui-g-12 ui-md-2">
+                          <button  type="button" pButton class="ui-button-danger" icon="pi pi-times-circle" (click)='deleteSelectFormOption(i)'></button>
+                      </div>
                     </form>
                 </div>
           </div>
