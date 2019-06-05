@@ -1,0 +1,12 @@
+<div [formGroup]='group'>
+  <h3>{{parameter.placeholder}}</h3>
+  <div class="ui-g" style="width:250px;margin-bottom:10px">
+      <div *ngFor="let option of parameter.options; let i=index" class="ui-g-12">
+          <p-checkbox [name]="'group'+i" [value]="option.value" [label]="option.label"
+              [formControl]="group.controls[parameter.name]"></p-checkbox>
+      </div>
+  </div>
+  <div *ngIf="parameter.group.get(parameter.name).touched||parameter.group.get(parameter.name).dirty">
+      <span class="error-label" *ngIf="parameter.get(parameter.name).hasError('required')">Field is required</span>
+  </div>
+</div>

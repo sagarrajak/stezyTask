@@ -1,0 +1,7 @@
+<div [formGroup]='group'>
+  <p-dropdown [options]="parameter.options" [formControlName]="parameter.name" [placeholder]="parameter.placeholder" optionLabel="viewValue"
+    [showClear]="true"></p-dropdown>
+  <div *ngIf="parameter.group.get(parameter.name).touched||parameter.group.get(parameter.name).dirty">
+    <span class="error-label" *ngIf="parameter.get(parameter.name).hasError('required')">Field is required</span>
+  </div>
+</div>
