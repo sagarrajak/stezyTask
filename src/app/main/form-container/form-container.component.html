@@ -2,4 +2,11 @@
     <p-header>
         Created Form 
     </p-header>
+    <div *ngFor='let element of mainService.formParameterArray'>
+        <task-checkbox-template [group]='mainService.createdFormGroup' [parameter]='element'></task-checkbox-template>
+        <app-input-single-line-template [group]='mainService.createdFormGroup' [parameter]='element'></app-input-single-line-template> 
+        <task-input-multi-choice-template [group]='mainService.createdFormGroup' [parameter]='element'></task-input-multi-choice-template>
+        <app-input-paragraph-template [group]='mainService.createdFormGroup' [parameter]='element'></app-input-paragraph-template>
+        <app-select-template [group]='mainService.createdFormGroup' [parameter]='element'></app-select-template>
+    </div>
 </p-card>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MainService } from 'src/app/main.service';
 
 @Component({
   selector: 'task-form-container',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormContainerComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public mainService: MainService
+  ) { }
 
   ngOnInit() {
   }

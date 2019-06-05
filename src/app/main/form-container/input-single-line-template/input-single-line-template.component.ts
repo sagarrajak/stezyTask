@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { IFormObject } from 'src/app/main.service';
 
 @Component({
@@ -8,12 +8,7 @@ import { IFormObject } from 'src/app/main.service';
   styleUrls: ['./input-single-line-template.component.scss']
 })
 export class InputSingleLineTemplateComponent  {
-
   @Input('group') group: FormGroup;
   @Input('parameter') parameter: IFormObject;
-  
   constructor() { }
-
- 
-
 }

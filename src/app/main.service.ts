@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 
 export enum ENUMFormTypes {
   INPUT = 'input',
@@ -20,10 +20,10 @@ export interface IOptions {
 }
 
 export interface IFormObject {
-  type : ENUMFormTypes;
+  type: ENUMFormTypes;
   placeholder: string;
   name: string;
-  options?: IOptions[]|IFormSelect[]; 
+  options?: IOptions[] | IFormSelect[];
 }
 
 @Injectable({
@@ -33,15 +33,22 @@ export class MainService {
   public formParameterArray: IFormObject[] = [];
   public createdFormGroup: FormGroup;
 
-  constructor() { }
+  constructor() { 
+    this.createdFormGroup = new FormGroup({}),
+    this.formParameterArray = [];
+  }
 
   public addNewValue(value: IFormObject): void {
-
+    let valueToAdd: any;
+    if (value.type = ENUMFormTypes.MULTIPLE_CHOICE) valueToAdd = [];
+    else valueToAdd = '';
+    if (this.createdFormGroup.controls[value.name])console.error('Name already added');
+    else this.createdFormGroup.addControl(value.name, new FormControl(valueToAdd))
   }
 
   public deleteAtIndex(index: number): void {
-    if(index>=0 && !isNaN(index)) {
-        this.formParameterArray.splice(index, 1);
+    if (index >= 0 && !isNaN(index)) {
+      this.formParameterArray.splice(index, 1);
     }
   }
 

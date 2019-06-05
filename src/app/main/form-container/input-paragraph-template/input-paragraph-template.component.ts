@@ -8,11 +8,7 @@ import { IFormObject } from 'src/app/main.service';
   styleUrls: ['./input-paragraph-template.component.scss']
 })
 export class InputParagraphTemplateComponent{
-
   @Input('group') group: FormGroup;
   @Input('parameter') parameter: IFormObject;
-
   constructor() { }
-
-
 }
