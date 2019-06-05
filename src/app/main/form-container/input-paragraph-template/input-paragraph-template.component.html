@@ -1,7 +1,6 @@
 <div [formGroup]='group'>
-  <div class="ui-inputgroup">
-    <input type="text" pInputText [placeholder]="parameter.placeholder" [formControlName]='parameter.name'>
-  </div>
+    <h3>{{parameter.placeholder}}</h3>
+    <textarea rows="5" cols="50" pInputTextarea autoResize="autoResize" [placeholder]="parameter.placeholder" [formControlName]='parameter.name'></textarea>
   <div *ngIf="group.get(parameter.name).touched||group.get(parameter.name).dirty">
     <span class="error-label" *ngIf="group.get(parameter.name).hasError('required')">Field is required</span>
   </div>

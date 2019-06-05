@@ -1,4 +1,5 @@
 <div [formGroup]='group'>
+    <h3>{{parameter.placeholder}}</h3>
   <p-dropdown [options]="parameter.options" [formControlName]="parameter.name" [placeholder]="parameter.placeholder" optionLabel="viewValue"
     [showClear]="true"></p-dropdown>
   <div *ngIf="group.get(parameter.name).touched||group.get(parameter.name).dirty">

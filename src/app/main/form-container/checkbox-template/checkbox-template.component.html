@@ -2,7 +2,7 @@
     <h3>{{parameter.placeholder}}</h3>
     <div class="ui-g" style="width:250px;margin-bottom:10px">
         <div *ngFor="let option of parameter.options; let i=index" class="ui-g-12">
-            <p-radioButton [name]="'group'+i" [value]="option.value" [label]="option.label"
+            <p-radioButton [name]="group" [value]="option.value" [label]="option.label"
                 [formControlName]="parameter.name"></p-radioButton>
         </div>
     </div>

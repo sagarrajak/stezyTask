@@ -28,7 +28,7 @@ export class CheckboxComponent {
     else {
       this.mainService.addNewValue({
         ...this.form.checkBoxForm.value,
-        ...{type: ENUMFormTypes.DROP_DOWN}
+        ...{type: ENUMFormTypes.CHECKBOXES}
       });
     }
   }
