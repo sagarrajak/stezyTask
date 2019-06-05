@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 export enum ENUMFormTypes {
   INPUT = 'input',
@@ -22,6 +22,7 @@ export interface IOptions {
 export interface IFormObject {
   type: ENUMFormTypes;
   placeholder: string;
+  isRequired: '1'|'0',
   name: string;
   options?: IOptions[] | IFormSelect[];
 }
@@ -44,7 +45,10 @@ export class MainService {
     else valueToAdd = '';
     if (this.createdFormGroup.controls[value.name])console.error('Name already added');
     else {
-      this.createdFormGroup.addControl(value.name, new FormControl(valueToAdd));
+      if(value.isRequired === '0')
+          this.createdFormGroup.addControl(value.name, new FormControl(valueToAdd));
+      else 
+          this.createdFormGroup.addControl(value.name, new FormControl(valueToAdd, Validators.required));
       this.formParameterArray.push(value);
       console.log('passed value', this.formParameterArray);
     }
