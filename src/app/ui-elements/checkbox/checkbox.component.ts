@@ -27,10 +27,10 @@ export class CheckboxComponent {
       this.form.checkBoxForm.markAllAsTouched();
     }
     else {
-      this.mainService.addNewValue({
+      if(this.mainService.addNewValue({
         ...this.form.checkBoxForm.value,
         ...{type: ENUMFormTypes.CHECKBOXES}
-      });
+      }))
       this.ref.close();
     }
   }

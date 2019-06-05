@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 
 export enum ENUMFormTypes {
   INPUT = 'input',
@@ -34,23 +35,32 @@ export class MainService {
   public formParameterArray: IFormObject[] = [];
   public createdFormGroup: FormGroup;
 
-  constructor() { 
+  constructor(
+    private messager: MessageService
+  ) { 
     this.createdFormGroup = new FormGroup({}),
     this.formParameterArray = [];
   }
 
-  public addNewValue(value: IFormObject): void {
+  public addNewValue(value: IFormObject): boolean {
     let valueToAdd: any;
     if (value.type === ENUMFormTypes.MULTIPLE_CHOICE) valueToAdd = [];
     else valueToAdd = '';
-    if (this.createdFormGroup.controls[value.name])console.error('Name already added');
+    if (this.createdFormGroup.controls[value.name]) {
+      console.error('Name already added');
+      this.messager.add({
+        'severity': 'error',
+         'summary': 'Another field with same name exist!'
+      })
+      return false
+    }
     else {
       if(value.isRequired === '0')
           this.createdFormGroup.addControl(value.name, new FormControl(valueToAdd));
       else 
           this.createdFormGroup.addControl(value.name, new FormControl(valueToAdd, Validators.required));
       this.formParameterArray.push(value);
-      console.log('passed value', this.formParameterArray);
+      return true;
     }
   }
 

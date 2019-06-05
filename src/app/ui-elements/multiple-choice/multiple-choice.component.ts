@@ -26,10 +26,10 @@ export class MultipleChoiceComponent {
       this.form.multipleChoiceForm.markAllAsTouched();
     }
     else {
-      this.mainService.addNewValue({
+      if(this.mainService.addNewValue({
         ...this.form.multipleChoiceForm.value,
         ...{type: ENUMFormTypes.MULTIPLE_CHOICE}
-      });
+      }))
       this.ref.close();
     }
   }

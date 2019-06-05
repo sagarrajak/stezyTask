@@ -25,10 +25,10 @@ export class ParagraphTextComponent  {
       this.form.paragraphTextForm.markAllAsTouched();
     }
     else {
-      this.mainService.addNewValue({
+      if(this.mainService.addNewValue({
         ...this.form.paragraphTextForm.value,
         ...{type: ENUMFormTypes.TEXTAREA}
-      });
+      }))
       this.ref.close();
     }
   }

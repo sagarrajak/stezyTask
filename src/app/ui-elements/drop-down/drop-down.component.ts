@@ -27,10 +27,10 @@ export class DropDownComponent {
       this.form.dorpDownTextForm.markAllAsTouched();
     }
     else {
-      this.mainService.addNewValue({
+      if(this.mainService.addNewValue({
         ...this.form.dorpDownTextForm.value,
         ...{type: ENUMFormTypes.DROP_DOWN}
-      });
+      }))
       this.ref.close();
     }
   }

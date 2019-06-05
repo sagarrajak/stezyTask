@@ -25,10 +25,10 @@ export class SingleLineTextComponent {
       this.form.singleLineTextForm.markAllAsTouched();
     }
     else {
-      this.mainService.addNewValue({
+      if(this.mainService.addNewValue({
         ...this.form.singleLineTextForm.value,
         ...{type: ENUMFormTypes.INPUT}
-      });
+      }))
       this.ref.close();
     }
   }
