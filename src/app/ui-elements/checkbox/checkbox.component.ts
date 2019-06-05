@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormFieldsService } from '../form-fields.service';
-import { MessageService } from 'primeng/api';
+import { MessageService, DynamicDialogRef } from 'primeng/api';
 import { FormArray } from '@angular/forms';
 import { MainService, ENUMFormTypes } from 'src/app/main.service';
 
@@ -14,7 +14,8 @@ export class CheckboxComponent {
   constructor(
     public form: FormFieldsService,
     private messageService: MessageService,
-    private mainService: MainService
+    private mainService: MainService,
+    private ref: DynamicDialogRef
   ) {}
 
   public formSubmit(): void {
@@ -30,6 +31,7 @@ export class CheckboxComponent {
         ...this.form.checkBoxForm.value,
         ...{type: ENUMFormTypes.CHECKBOXES}
       });
+      this.ref.close();
     }
   }
 

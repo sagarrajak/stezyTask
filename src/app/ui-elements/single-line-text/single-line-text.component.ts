@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormFieldsService } from '../form-fields.service';
-import { MessageService } from 'primeng/api';
+import { MessageService, DynamicDialogRef } from 'primeng/api';
 import { MainService, ENUMFormTypes } from 'src/app/main.service';
 
 @Component({
@@ -12,7 +12,8 @@ export class SingleLineTextComponent {
 
   constructor(public form: FormFieldsService, 
     private messageService: MessageService,
-    public mainService: MainService
+    public mainService: MainService,
+    private ref: DynamicDialogRef
     ) {}
 
   public formSubmit(): void {
@@ -28,6 +29,7 @@ export class SingleLineTextComponent {
         ...this.form.singleLineTextForm.value,
         ...{type: ENUMFormTypes.INPUT}
       });
+      this.ref.close();
     }
   }
 }

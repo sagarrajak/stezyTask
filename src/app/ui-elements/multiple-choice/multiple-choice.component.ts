@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormFieldsService } from '../form-fields.service';
-import { MessageService } from 'primeng/api';
+import { MessageService, DynamicDialogRef } from 'primeng/api';
 import { FormArray } from '@angular/forms';
 import { MainService, ENUMFormTypes } from 'src/app/main.service';
 
@@ -13,7 +13,8 @@ export class MultipleChoiceComponent {
   constructor(
     public form: FormFieldsService,
     private messageService: MessageService,
-    private mainService: MainService
+    private mainService: MainService,
+    private ref: DynamicDialogRef
   ) {}
 
   public formSubmit(): void {
@@ -29,6 +30,7 @@ export class MultipleChoiceComponent {
         ...this.form.multipleChoiceForm.value,
         ...{type: ENUMFormTypes.MULTIPLE_CHOICE}
       });
+      this.ref.close();
     }
   }
 

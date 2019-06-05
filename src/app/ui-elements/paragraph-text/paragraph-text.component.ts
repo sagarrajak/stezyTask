@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MessageService } from 'primeng/api';
+import { MessageService, DynamicDialogRef } from 'primeng/api';
 import { FormFieldsService } from '../form-fields.service';
 import { MainService, ENUMFormTypes } from 'src/app/main.service';
 
@@ -12,7 +12,8 @@ export class ParagraphTextComponent  {
 
   constructor(public form: FormFieldsService, 
     private messageService: MessageService,
-    private mainService: MainService  
+    private mainService: MainService,
+    private ref: DynamicDialogRef
   ) {  }
 
   public formSubmit(): void {
@@ -28,6 +29,7 @@ export class ParagraphTextComponent  {
         ...this.form.paragraphTextForm.value,
         ...{type: ENUMFormTypes.TEXTAREA}
       });
+      this.ref.close();
     }
   }
 
