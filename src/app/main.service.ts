@@ -66,7 +66,9 @@ export class MainService {
 
   public deleteAtIndex(index: number): void {
     if (index >= 0 && !isNaN(index)) {
+      let element = this.formParameterArray[index];
       this.formParameterArray.splice(index, 1);
+      this.createdFormGroup.removeControl(element.name);
     }
   }
 

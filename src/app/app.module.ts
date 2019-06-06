@@ -27,8 +27,9 @@ import { MultipleChoiceComponent } from './ui-elements/multiple-choice/multiple-
 import { ParagraphTextComponent } from './ui-elements/paragraph-text/paragraph-text.component';
 import { SingleLineTextComponent } from './ui-elements/single-line-text/single-line-text.component';
 import { ErrorMessageComponent } from './util/error-message/error-message.component';
-import {DropdownModule} from 'primeng/dropdown';
-import {InputTextareaModule} from 'primeng/inputtextarea';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { DragDropModule } from 'primeng/dragdrop';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     ToastModule,
     RadioButtonModule,
     DropdownModule,
-    InputTextareaModule
+    InputTextareaModule,
+    DragDropModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent],

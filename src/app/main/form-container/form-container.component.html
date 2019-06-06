@@ -1,14 +1,56 @@
 <p-card>
     <p-header>
-        Created Form 
+        <h2>Created Form </h2>
     </p-header>
-    <div *ngFor='let element of mainService.formParameterArray'>
-      <ng-container [ngSwitch]='element.type'>
-            <div *ngSwitchCase="'checkboxes'"><task-checkbox-template [group]='mainService.createdFormGroup' [parameter]='element'></task-checkbox-template></div>
-            <div *ngSwitchCase="'input'"><app-input-single-line-template [group]='mainService.createdFormGroup' [parameter]='element'></app-input-single-line-template> </div>
-            <div *ngSwitchCase="'multiple_choice'"><task-input-multi-choice-template [group]='mainService.createdFormGroup' [parameter]='element'></task-input-multi-choice-template></div>
-            <div *ngSwitchCase="'textarea'"><app-input-paragraph-template [group]='mainService.createdFormGroup' [parameter]='element'></app-input-paragraph-template></div>
-            <div *ngSwitchCase="'drop_down'"><app-select-template [group]='mainService.createdFormGroup' [parameter]='element'></app-select-template></div>
-      </ng-container>
+    <div 
+        *ngFor='let element of mainService.formParameterArray; let i=index'
+         pDraggable="uiElement"  
+         (onDragStart)="dragStart($event, i)" 
+         (onDragEnd)="dragEnd($event)"
+         pDroppable="uiElement"
+         (onDrop)="drop($event, i)"
+         >
+      <div [ngSwitch]='element.type' style="margin-top: 12px;margin-bottom: 12px">
+            <p-card *ngSwitchCase="'checkboxes'" >
+              <div fxLayout="row" fxLayoutAlign="space-between">
+                <task-checkbox-template [group]='mainService.createdFormGroup' [parameter]='element'></task-checkbox-template>
+                <div> 
+                  <button pButton (click)="deleteAtIndex(i)" type="button" icon="pi pi-trash" class="ui-button-danger"></button>
+                </div>
+              </div>
+            </p-card>
+            <p-card *ngSwitchCase="'input'">
+              <div fxLayout="row" fxLayoutAlign="space-between">
+                <app-input-single-line-template [group]='mainService.createdFormGroup' [parameter]='element'></app-input-single-line-template>
+                <div> 
+                    <button pButton (click)="deleteAtIndex(i)"  type="button" icon="pi pi-trash" class="ui-button-danger"></button>
+                </div>
+              </div>
+            </p-card>
+            <p-card *ngSwitchCase="'multiple_choice'">
+                <div fxLayout="row" fxLayoutAlign="space-between">
+                    <task-input-multi-choice-template [group]='mainService.createdFormGroup' [parameter]='element'></task-input-multi-choice-template>
+                    <div>
+                        <button pButton (click)="deleteAtIndex(i)"  type="button" icon="pi pi-trash" class="ui-button-danger"></button>
+                    </div>
+                </div>
+            </p-card>
+            <p-card *ngSwitchCase="'textarea'">
+                <div fxLayout="row" fxLayoutAlign="space-between">
+                    <app-input-paragraph-template [group]='mainService.createdFormGroup' [parameter]='element'></app-input-paragraph-template>
+                    <div>
+                        <button pButton (click)="deleteAtIndex(i)"  type="button" icon="pi pi-trash" class="ui-button-danger"></button>
+                    </div>
+                </div>
+            </p-card>
+            <p-card *ngSwitchCase="'drop_down'">
+              <div fxLayout="row" fxLayoutAlign="space-between"> 
+                <app-select-template [group]='mainService.createdFormGroup' [parameter]='element'></app-select-template>
+                <div>
+                    <button pButton  (click)="deleteAtIndex(i)"  type="button" icon="pi pi-trash" class="ui-button-danger"></button>
+                </div>
+              </div>
+            </p-card>
+      </div>
     </div>
 </p-card>
