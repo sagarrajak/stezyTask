@@ -13,7 +13,7 @@
       <div [ngSwitch]='element.type' style="margin-top: 12px;margin-bottom: 12px">
             <p-card *ngSwitchCase="'checkboxes'" >
               <div fxLayout="row" fxLayoutAlign="space-between">
-                <task-checkbox-template [group]='mainService.createdFormGroup' [parameter]='element'></task-checkbox-template>
+                <task-radio-template [group]='mainService.createdFormGroup' [parameter]='element'></task-radio-template>
                 <div> 
                   <button pButton (click)="deleteAtIndex(i)" type="button" icon="pi pi-trash" class="ui-button-danger"></button>
                 </div>
@@ -53,4 +53,7 @@
             </p-card>
       </div>
     </div>
+    <p>
+        {{mainService.form_value|json}}
+    </p>
 </p-card>

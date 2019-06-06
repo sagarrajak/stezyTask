@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MainService, IFormObject } from 'src/app/main.service';
+import { Component } from '@angular/core';
+import { IFormObject, MainService } from 'src/app/main.service';
 
 @Component({
   selector: 'task-form-container',
@@ -9,6 +9,7 @@ import { MainService, IFormObject } from 'src/app/main.service';
 export class FormContainerComponent {
 
   private drag_index: number = -1;
+  public form_value: string;
 
   constructor(
     public mainService: MainService
@@ -31,11 +32,11 @@ export class FormContainerComponent {
       let tem_arr: IFormObject[] = [...this.mainService.formParameterArray];
       let arr_to_return = [];
       if (drop_index <= this.drag_index) {
-          arr_to_return = [
-            ...tem_arr.slice(0, drop_index),
-            ...[tem_arr[this.drag_index]],
-            ...tem_arr.slice(drop_index, tem_arr.length)
-          ];
+        arr_to_return = [
+          ...tem_arr.slice(0, drop_index),
+          ...[tem_arr[this.drag_index]],
+          ...tem_arr.slice(drop_index, tem_arr.length)
+        ];
       }
       else {
         if (drop_index + 1 <= tem_arr.length) {
@@ -49,14 +50,11 @@ export class FormContainerComponent {
           arr_to_return.push(tem_arr[this.drag_index]);
         }
       }
-
-
       if (drop_index <= this.drag_index)
         arr_to_return.splice(this.drag_index + 1, 1);
       else
         arr_to_return.splice(this.drag_index, 1);
       this.mainService.formParameterArray = [...arr_to_return];
     }
-
   }
 }

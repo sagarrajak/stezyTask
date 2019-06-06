@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DialogService } from 'primeng/api';
-import { CheckboxComponent } from '../ui-elements/checkbox/checkbox.component';
+import { RadioButtonsComponent } from '../ui-elements/radio-buttons/radio-buttons.component';
 import { DropDownComponent } from '../ui-elements/drop-down/drop-down.component';
 import { MultipleChoiceComponent } from '../ui-elements/multiple-choice/multiple-choice.component';
 import { ParagraphTextComponent } from '../ui-elements/paragraph-text/paragraph-text.component';
@@ -62,9 +62,9 @@ export class MainComponent {
     })
   }
 
-  public openDialogInputCheckbox(): void {
-   const ref =  this.dialogService.open(CheckboxComponent, {
-      header: 'Add checkbox',
+  public openDialogInputRadioButtons(): void {
+   const ref =  this.dialogService.open(RadioButtonsComponent, {
+      header: 'Add Radio Button',
       width: '30%',
       closeOnEscape: false
     });

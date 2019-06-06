@@ -14,14 +14,14 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { ToastModule } from 'primeng/toast';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CheckboxTemplateComponent } from './main/form-container/checkbox-template/checkbox-template.component';
+import { RadioButtonsTemplateComponent } from './main/form-container/radio-buttons-template/radio-buttons-template.component';
 import { FormContainerComponent } from './main/form-container/form-container.component';
 import { InputMultiChoiceTemplateComponent } from './main/form-container/input-multi-choice-template/input-multi-choice-template.component';
 import { InputParagraphTemplateComponent } from './main/form-container/input-paragraph-template/input-paragraph-template.component';
 import { InputSingleLineTemplateComponent } from './main/form-container/input-single-line-template/input-single-line-template.component';
 import { SelectTemplateComponent } from './main/form-container/select-template/select-template.component';
 import { MainComponent } from './main/main.component';
-import { CheckboxComponent } from './ui-elements/checkbox/checkbox.component';
+import { RadioButtonsComponent } from './ui-elements/radio-buttons/radio-buttons.component';
 import { DropDownComponent } from './ui-elements/drop-down/drop-down.component';
 import { MultipleChoiceComponent } from './ui-elements/multiple-choice/multiple-choice.component';
 import { ParagraphTextComponent } from './ui-elements/paragraph-text/paragraph-text.component';
@@ -37,12 +37,12 @@ import { DragDropModule } from 'primeng/dragdrop';
     MainComponent,
     SingleLineTextComponent,
     ParagraphTextComponent,
-    CheckboxComponent,
+    RadioButtonsComponent,
     DropDownComponent,
     MultipleChoiceComponent,
     FormContainerComponent,
     ErrorMessageComponent,
-    CheckboxTemplateComponent,
+    RadioButtonsTemplateComponent,
     SelectTemplateComponent,
     InputParagraphTemplateComponent,
     InputSingleLineTemplateComponent,
@@ -71,7 +71,7 @@ import { DragDropModule } from 'primeng/dragdrop';
   providers: [MessageService],
   bootstrap: [AppComponent],
   entryComponents: [
-    CheckboxComponent,
+    RadioButtonsComponent,
     DropDownComponent,
     MultipleChoiceComponent,
     SingleLineTextComponent,

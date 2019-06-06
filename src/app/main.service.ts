@@ -34,6 +34,7 @@ export interface IFormObject {
 export class MainService {
   public formParameterArray: IFormObject[] = [];
   public createdFormGroup: FormGroup;
+  public form_value: object  = {};
 
   constructor(
     private messager: MessageService
@@ -60,6 +61,7 @@ export class MainService {
       else 
           this.createdFormGroup.addControl(value.name, new FormControl(valueToAdd, Validators.required));
       this.formParameterArray.push(value);
+      this.form_value = this.createdFormGroup.value;
       return true;
     }
   }
@@ -69,12 +71,14 @@ export class MainService {
       let element = this.formParameterArray[index];
       this.formParameterArray.splice(index, 1);
       this.createdFormGroup.removeControl(element.name);
+      this.form_value = this.createdFormGroup.value;
     }
   }
 
   public resetAllValue(): void {
     this.createdFormGroup = new FormGroup({});
     this.formParameterArray = [];
+    this.form_value = {};
   }
 
 }

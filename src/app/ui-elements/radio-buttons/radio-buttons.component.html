@@ -27,7 +27,7 @@
       <div>
         <div fxLayout="row" fxLayoutAlign="space-between">
             <h3>Options of select field</h3>
-            <p-button label="add" (click)='addCheckboxOption()'></p-button>
+            <p-button label="add" (click)='addRadioButtonsOption()'></p-button>
         </div>
         <div *ngFor="let item of form.checkBoxForm.get('options')['controls'];let i = index">
               <div class="ui-g ui-fluid">
@@ -45,7 +45,7 @@
                         <task-err [control]="item.get('label')"></task-err>
                     </div> 
                     <div class="ui-g-12 ui-md-2">
-                        <button  type="button" pButton class="ui-button-danger" icon="pi pi-times-circle" (click)='deleteCheckboxFormOption(i)'></button>
+                        <button  type="button" pButton class="ui-button-danger" icon="pi pi-times-circle" (click)='deleteRadioButtonsFormOption(i)'></button>
                     </div>
                   </form>
               </div>

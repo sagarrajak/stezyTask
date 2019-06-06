@@ -3,11 +3,11 @@ import { FormGroup } from '@angular/forms';
 import { IFormObject } from 'src/app/main.service';
 
 @Component({
-  selector: 'task-checkbox-template',
-  templateUrl: './checkbox-template.component.html',
-  styleUrls: ['./checkbox-template.component.scss']
+  selector: 'task-radio-template',
+  templateUrl: './radio-buttons-template.component.html',
+  styleUrls: ['./radio-buttons-template.component.scss']
 })
-export class CheckboxTemplateComponent  {
+export class RadioButtonsTemplateComponent  {
   @Input('group') group: FormGroup;
   @Input('parameter') parameter: IFormObject;
   constructor() { }
